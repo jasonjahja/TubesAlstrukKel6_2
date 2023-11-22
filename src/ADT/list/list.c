@@ -60,7 +60,7 @@ void AddPenyanyi (ListofPenyanyi *L, Word singer)
     int index = BanyakPenyanyi(*L);
     if (BanyakPenyanyi(*L) < MaxElList)
     {
-        CopyWordToVar(&((*L).listpenyanyi[index].namaPenyanyi), singer);
+        CopyWordToVar(&(*L).listpenyanyi[index].namaPenyanyi, singer);
         index++;
     }
     // printf("PENYANYI YANG DIINPUT : %s\n", singer.TabWord);
@@ -100,7 +100,7 @@ int IndeksPenyanyi (ListofPenyanyi L, Word X)
         int count = 0;
         for (int i = 0; i < BanyakPenyanyi(L); i++)
         {
-            if (IsWordEq(L.listpenyanyi[i].namaPenyanyi, X))
+            if (IsWordEq(L.listpenyanyi[count].namaPenyanyi, X))
             {
                 return count;
             }
@@ -128,6 +128,7 @@ void DisplayListPenyanyi (ListofPenyanyi L)
 {
     for (int i = 0 ; i < BanyakPenyanyi(L); i++)
     {
+        printf("     %d. ",i+1);   
         TulisWord(L.listpenyanyi[i].namaPenyanyi);
     }
 }

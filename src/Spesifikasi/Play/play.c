@@ -1,4 +1,4 @@
-#include "Play.h"
+#include "play.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -40,7 +40,8 @@ void playSong (ListofPenyanyi daftarpenyanyi, CurrentStat * currentSong, songHis
     
     if (IDPenyanyi != -1)
     {
-        printf("Daftar Album :\n");
+        printf("%d\n", IDPenyanyi);
+        printf("Daftar Album:\n");
         for (int j = 0; j < BanyakAlbum(daftarpenyanyi.listpenyanyi[IDPenyanyi].album); j++)
         {
             printf("tes");
@@ -100,7 +101,7 @@ void playSong (ListofPenyanyi daftarpenyanyi, CurrentStat * currentSong, songHis
     }    
 }
 
-void playPlaylist(ListofPlaylist daftarplaylist, CurrentStat * currentStat, songHistory * history, Queue * queue)
+void playPlaylist(ListofPlaylist daftarplaylist, CurrentStat * currentSong, songHistory * history, Queue * queue)
 {
     printf("Masukkan ID Playlist: ");
     STARTINPCOMMAND(stdin);
@@ -116,12 +117,12 @@ void playPlaylist(ListofPlaylist daftarplaylist, CurrentStat * currentStat, song
         IDPlaylist = WordtoNum(input) - 1;
     }
 
-    currentStat->playlist = daftarplaylist.namaPlaylist[IDPlaylist];
-    currentStat->statusPL = 1;
-    currentStat->currentplay.judul = daftarplaylist.list->First->info.Lagu.judul;
-    currentStat->currentplay.album = daftarplaylist.list->First->info.Lagu.album;
-    currentStat->currentplay.penyanyi = daftarplaylist.list->First->info.Lagu.penyanyi;
-    currentStat->currentplay.status = 1;
+    currentSong->playlist = daftarplaylist.namaPlaylist[IDPlaylist];
+    currentSong->statusPL = 1;
+    currentSong->currentplay.judul = daftarplaylist.list->First->info.Lagu.judul;
+    currentSong->currentplay.album = daftarplaylist.list->First->info.Lagu.album;
+    currentSong->currentplay.penyanyi = daftarplaylist.list->First->info.Lagu.penyanyi;
+    currentSong->currentplay.status = 1;
 
     address P = daftarplaylist.list[IDPlaylist].First;
     while (Next(P) != NilNode)
@@ -131,5 +132,5 @@ void playPlaylist(ListofPlaylist daftarplaylist, CurrentStat * currentStat, song
         P = Next(P);
     }
 
-    printf("Memutar playlist \""); TulisWord(currentStat->playlist); printf("\".\n");
+    printf("Memutar playlist \""); TulisWord(currentSong->playlist); printf("\".\n");
 }

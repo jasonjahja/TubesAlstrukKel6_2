@@ -11,7 +11,7 @@
 //#include "../ADT/strukturberkait/listberkait.h"
 #include "../../ADT/set/set.h"
 
-void Load(ListofPenyanyi *ListPenyanyi, Word CW, boolean *started);
+void load();
 
 
 #endif

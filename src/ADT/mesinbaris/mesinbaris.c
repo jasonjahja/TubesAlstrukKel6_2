@@ -4,9 +4,9 @@
 boolean endLine;
 boolean EndSentence;
 
-// Sentence currentInput;
+Sentence currentInput;
 Sentence currentLine;
-// Sentence currentInp;
+Sentence currentInput;
 
 void STARTFILE(FILE* input)
 {
@@ -35,6 +35,36 @@ void STARTINPCOMMAND(FILE* input)
         EndSentence = false;
         CopyCommand();
     }
+}
+
+void STARTINPUT(FILE* input)
+{
+    START(input);
+    IgnoreNewLine();
+    if (currentChar == ';')
+    {
+        EndSentence = true;
+    }
+    else
+    {
+        EndSentence = false;
+        CopyLine();
+    }
+}
+
+void CopyInput()
+{
+    ResetCommand();  // Reset array
+    int i = 0;
+    while ((currentChar != ';') && (currentChar != '\n') && (currentChar != EOF))
+    {
+        currentInput.kalimat[i] = currentChar;
+        // printf("%c", CC);
+        i++;
+        ADV();
+        
+    }
+    currentInput.lengthsentence = i;
 }
 
 // Cmment dulu yak gan
@@ -74,10 +104,18 @@ void STARTINPCOMMAND(FILE* input)
 // }
 
 void ResetCommand() { // dibenerin 
-    for (int i = 0; i < currentWord.Length; i++) {
-        currentWord.TabWord[i] = '\0';
+    for (int i = 0; i < sizeof(currentLine.kalimat) ; i++) {
+        currentLine.kalimat[i] = '\0';
+        currentLine.lengthsentence = 0;
     }
-    currentWord.Length = 0;
+}
+
+
+void ResetInput(){
+    for (int i = 0; i < sizeof(currentInput.kalimat) ; i++) {
+        currentInput.kalimat[i] = '\0';
+        currentInput.lengthsentence = 0;
+    }
 }
 
 void CopyCommand() {
@@ -85,26 +123,13 @@ void CopyCommand() {
     int i = 0;
     while ((currentChar != ';') && (currentChar != ' ') && (currentChar != EOF))
     {
-        currentWord.TabWord[i] = currentChar;
+        currentLine.kalimat[i] = currentChar;
         // printf("%c", CC);
         i++;
         ADV();
         
     }
-    currentWord.Length= i;
-}
-
-void ADVCOMM() {
-    IgnoreBlanks();
-    if (currentChar != ';')
-    {
-        endWord = false;
-        CopyCommand();
-    } 
-    else
-    {
-        endWord = true;
-    }
+    currentLine.lengthsentence = i;
 }
 
 void CopyLine() {
@@ -119,6 +144,19 @@ void CopyLine() {
         
     }
     currentLine.lengthsentence = i;
+}
+
+void ADVCOMM() {
+    IgnoreBlanks();
+    if (currentChar != ';')
+    {
+        endLine = false;
+        CopyCommand();
+    } 
+    else
+    {
+        endLine = true;
+    }
 }
 
 void ADVLINE()
@@ -168,6 +206,12 @@ void GetCommand()
 }
     // STARTLINE(stdin); << awalnya
 
+void GetInput()
+{
+    currentInput.lengthsentence = 0;
+    STARTINPUT(stdin);
+}
+
 // nambah fungsi TulisKalimat
 void TulisKalimat(Sentence currentLine) {
     for (int i = 0; i < currentLine.lengthsentence; i++) {
@@ -178,30 +222,30 @@ void TulisKalimat(Sentence currentLine) {
     printf("\n");
 }
 
-// boolean isInputEqual(Sentence Input, Word Kata)
-// {   
-//     boolean equal = true;
-//     if (Input.lengthsentence == Kata.Length)
-//     {
-//         int i = 0;
-//         while (i < Input.lengthsentence && equal)
-//         {
-//             if (Input.kalimat[i] != Kata.TabWord[i])
-//             {
-//                 equal = false;
-//             }
-//             else
-//             {
-//                 i++;
-//             }
-//         }
-//         return equal;
-//     }
-//     else
-//     {
-//         return false;
-//     }
-// }
+boolean isInputEqual(Sentence Input, Word Kata)
+{   
+    boolean equal = true;
+    if (Input.lengthsentence == Kata.Length)
+    {
+        int i = 0;
+        while (i < Input.lengthsentence && equal)
+        {
+            if (Input.kalimat[i] != Kata.TabWord[i])
+            {
+                equal = false;
+            }
+            else
+            {
+                i++;
+            }
+        }
+        return equal;
+    }
+    else
+    {
+        return false;
+    }
+}
 
 void ResetKalimat(){ // dibenerin 
     int i;

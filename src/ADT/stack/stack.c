@@ -60,7 +60,7 @@ void PopStack(songHistory * S, Word* song, Word* album, Word* singer)
 void PrintStack(songHistory S) {
     songHistory revStack;
     CreateEmptyStack(&revStack);
- 
+
     Word songg;
     Word albumm;
     Word singerr;

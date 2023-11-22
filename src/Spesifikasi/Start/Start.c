@@ -10,33 +10,38 @@ static FILE *pita;
 // Sentence currentLine; // nambah ini
 
 void startConfig(ListofPenyanyi *ListPenyanyi){
-    pita = fopen("../save/config.txt","r");
+    pita = fopen("../../save/config.txt","r");
     
     if (pita == NULL){
         printf("Gagal membuka file\n");
     }
 
     STARTFILE(pita);
+    TulisKalimat(currentLine);
     int jumlahpenyanyi = atoi(currentLine.kalimat);    
     
     for(int i = 0 ;i < jumlahpenyanyi;i++){
         ADVWORD();
         int jumlahAlbum = WordtoNum(currentWord);  
+        TulisWord(currentWord);
         ADVSENTENCE();
         AddPenyanyi(ListPenyanyi, toKata(currentLine.kalimat));
+        printf("JUMLAH KATA : %d\n", currentLine.lengthsentence);
       
         for (int j = 0; j<jumlahAlbum;j++){
             ADVWORD();
             int banyakLagu = WordtoNum(currentWord);
 
- 
+            TulisWord(currentWord); 
             ADVSENTENCE();
             AddAlbum(&(ListPenyanyi->listpenyanyi[i].album), toKata(currentLine.kalimat));
+            printf("JUMLAH KATA : %d\n", currentLine.lengthsentence);
 
-    
+            TulisKalimat(currentLine);
    
             for(int k = 0; k<banyakLagu;k++){
                 ADVSENTENCE();
+                TulisKalimat(currentLine);
                 AddLagu(&(ListPenyanyi->listpenyanyi[i].album.listalbum[j].listlagu), toKata(currentLine.kalimat));
                 printf("JUMLAH KATA : %d\n1", currentLine.lengthsentence);
             }
@@ -62,3 +67,15 @@ void startConfig(ListofPenyanyi *ListPenyanyi){
     
     fclose(pita);
 }
+
+// int main(){
+
+//     ListofPenyanyi ListPenyanyi = MakeList();
+
+//     startConfig(&ListPenyanyi);
+//     printf("\n\n\n");
+//     list_default(&ListPenyanyi);
+    
+
+//     return 0;
+// }

@@ -94,6 +94,7 @@ void DisplayListAlbum (MapofAlbum M)
 {
     for (int i = 0; i < BanyakAlbum(M); i++)
     {
+        printf("     %d. ",i+1);
         TulisWord(M.listalbum[i].namaAlbum);
     }
 }
@@ -105,7 +106,7 @@ int IndeksAlbum(MapofAlbum M, Word k)
         int count = 0;
         for (int i = 0; i < BanyakAlbum(M); i++)
         {
-            if (IsWordEq(M.listalbum[i].namaAlbum, k))
+            if (IsWordEq(M.listalbum[count].namaAlbum, k))
             {
                 return count;
             }

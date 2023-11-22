@@ -39,11 +39,17 @@ void CopyCommand();
 
 void CopyLine();
 
-// boolean isInputEqual(Sentence Input, Word Kata);
+void STARTINPUT(FILE* input);
+
+void CopyInput();
+
+boolean isInputEqual(Sentence Input, Word Kata);
 
 void ResetKalimat();
 
 // Word AccessCommand(Sentence comm, int Idx);
+
+Sentence tokalimat (Sentence kata);
 
 int SentenceLength(Sentence kata);
 

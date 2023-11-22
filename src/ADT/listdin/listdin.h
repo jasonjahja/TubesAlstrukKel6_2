@@ -32,7 +32,7 @@ boolean isMemberListPlaylist(ListofPlaylist l, Word X);
 
 int IndexListPlaylist(ListofPlaylist l, Word val);
 
-ListBerkait GetListPlaylist(ListofPlaylist l, int idx);
+Word GetListPlaylist(ListofPlaylist l, int idx);
 
 void InsertListPlaylist(ListofPlaylist *l, Word val);
 
