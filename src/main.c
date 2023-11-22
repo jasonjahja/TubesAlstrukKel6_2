@@ -90,111 +90,144 @@ int main() {
         }
 
         else if (IsWordEq(currentWord, word_list)) {
-            ADVCOMM();
-            if (IsWordEq(currentWord, word_default)) {
-                // List();
-            }
-            else if (IsWordEq(currentWord, word_playlist)) {
-                // List();
-            }
-            else
-            {
+            if (started) {
+                ADVCOMM();
+                if (IsWordEq(currentWord, word_default)) {
+                    // List();
+                }
+                else if (IsWordEq(currentWord, word_playlist)) {
+                    // List();
+                }
+                else
+                {
+                    printf("ERROR: Command tidak dapat dieksekusi!\n\n");
+                    ADVCOMM();
+                }
+            } else {
                 printf("ERROR: Command tidak dapat dieksekusi!\n\n");
                 ADVCOMM();
             }
         }
 
         else if (IsWordEq(currentWord, word_play)) {
-            ADVCOMM();
-            if (IsWordEq(currentWord, word_song)) {
-                playSong(LP, &CS, &SH, &Q);
-            }
-            else if (IsWordEq(currentWord, word_playlist)) {
-                playPlaylist(LPl, &CS, &SH, &Q);
-            }
-            else
-            {
-                printf("ERROR: Command tidak dapat dieksekusi!\n\n");
+            if (started) {
                 ADVCOMM();
-            }
-        }
-
-        else if (IsWordEq(currentWord, word_queue)) {
-            ADVCOMM();
-            if (IsWordEq(currentWord, word_song)) {
-                if (!started)
+                if (IsWordEq(currentWord, word_song)) {
+                    playSong(LP, &CS, &SH, &Q);
+                }
+                else if (IsWordEq(currentWord, word_playlist)) {
+                    playPlaylist(LPl, &CS, &SH, &Q);
+                }
+                else
                 {
                     printf("ERROR: Command tidak dapat dieksekusi!\n\n");
                     ADVCOMM();
                 }
-                else
-                {   
-                    queueSong(LP, &Q);
-                }  
-            }
-            else if (IsWordEq(currentWord, word_playlist)) {
-                // queuePlaylist();
-            }
-            else if (IsWordEq(currentWord, word_swap)) {
-                int id1 = WordtoNum(currentWord);
-                ADVCOMM(); int id2 = WordtoNum(currentWord);
-                queueSwap(&Q, id1, id2);
-            }
-            else if (IsWordEq(currentWord, word_remove)) {
-                int id = WordtoNum(currentWord);
-                queueRemove(&Q, id);
-            }
-            else if (IsWordEq(currentWord, word_clear)) {
-                queueClear(&Q);
-            }
-            else
-            {
+            } else {
                 printf("ERROR: Command tidak dapat dieksekusi!\n\n");
                 ADVCOMM();
             }
+            
+        }
+
+        else if (IsWordEq(currentWord, word_queue)) {
+            if (started) {
+                ADVCOMM();
+                if (IsWordEq(currentWord, word_song)) {
+                    if (!started)
+                    {
+                        printf("ERROR: Command tidak dapat dieksekusi!\n\n");
+                        ADVCOMM();
+                    }
+                    else
+                    {   
+                        queueSong(LP, &Q);
+                    }  
+                }
+                else if (IsWordEq(currentWord, word_playlist)) {
+                    // queuePlaylist();
+                }
+                else if (IsWordEq(currentWord, word_swap)) {
+                    int id1 = WordtoNum(currentWord);
+                    ADVCOMM(); int id2 = WordtoNum(currentWord);
+                    queueSwap(&Q, id1, id2);
+                }
+                else if (IsWordEq(currentWord, word_remove)) {
+                    int id = WordtoNum(currentWord);
+                    queueRemove(&Q, id);
+                }
+                else if (IsWordEq(currentWord, word_clear)) {
+                    queueClear(&Q);
+                }
+                else
+                {
+                    printf("ERROR: Command tidak dapat dieksekusi!\n\n");
+                    ADVCOMM();
+                }
+            } else {
+                printf("ERROR: Command tidak dapat dieksekusi!\n\n");
+                ADVCOMM();
+            }
+            
         }
 
         else if (IsWordEq(currentWord, word_song)) {
-            ADVCOMM();
-            if (IsWordEq(currentWord, word_next)) {
-                nextSong(&Q, &SH, &CS);
-            }
-            else if (IsWordEq(currentWord, word_previous)) {
-                prevSong(&Q, &SH, &CS);
-            }
-            else
-            {
+            if (started) {
+                ADVCOMM();
+                if (IsWordEq(currentWord, word_next)) {
+                    nextSong(&Q, &SH, &CS);
+                }
+                else if (IsWordEq(currentWord, word_previous)) {
+                    prevSong(&Q, &SH, &CS);
+                }
+                else
+                {
+                    printf("ERROR: Command tidak dapat dieksekusi!\n\n");
+                    ADVCOMM();
+                }
+            } else {
                 printf("ERROR: Command tidak dapat dieksekusi!\n\n");
                 ADVCOMM();
             }
+            
         }
 
         else if (IsWordEq(currentWord, word_playlist)) {
-            ADVCOMM();
-            if (IsWordEq(currentWord, word_create)) {
-                // Song();
-            }
-            else if (IsWordEq(currentWord, word_add)) {
-                // List();
-            }
-            else if (IsWordEq(currentWord, word_swap)) {
-                // List();
-            }
-            else if (IsWordEq(currentWord, word_remove)) {
-                // List();
-            }
-            else if (IsWordEq(currentWord, word_delete)) {
-                // List();
-            }
-            else
-            {
+            if (started) {
+                ADVCOMM();
+                if (IsWordEq(currentWord, word_create)) {
+                    // Song();
+                }
+                else if (IsWordEq(currentWord, word_add)) {
+                    // List();
+                }
+                else if (IsWordEq(currentWord, word_swap)) {
+                    // List();
+                }
+                else if (IsWordEq(currentWord, word_remove)) {
+                    // List();
+                }
+                else if (IsWordEq(currentWord, word_delete)) {
+                    // List();
+                }
+                else
+                {
+                    printf("ERROR: Command tidak dapat dieksekusi!\n\n");
+                    ADVCOMM();
+                }
+            } else {
                 printf("ERROR: Command tidak dapat dieksekusi!\n\n");
                 ADVCOMM();
             }
         }
 
         else if (IsWordEq(currentWord, word_status)) {
-            Status(CS, Q);
+            if (started) {
+                Status(CS, Q);
+            } else {
+                printf("ERROR: Command tidak dapat dieksekusi!\n\n");
+                ADVCOMM();
+            }
         }
 
         else if (IsWordEq(currentWord, word_save)) {
@@ -220,6 +253,7 @@ int main() {
 
         else {
             printf("Command tidak diketahui!\n\n");
+            ADVCOMM();
         }
     }
     return 0;
