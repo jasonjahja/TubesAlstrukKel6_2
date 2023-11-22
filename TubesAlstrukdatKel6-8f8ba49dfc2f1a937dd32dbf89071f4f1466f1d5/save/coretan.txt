@@ -1,0 +1,22 @@
+Penyanyi -> List
+Kumpulan Album -> Map
+Playlist -> Linked List
+Lagu -> Set
+
+// Buat print element di semua ADT
+
+
+
+// TO DO ADT
+
+1) START
+2) Playlist
+3) User (Opsional)
+
+// TO DO ADV
+
+1) ADVWORD
+2) Ignore Newline
+3) Ignore Blank
+4) ADVBLANK (Cuek Blank)
+5) ADVLINE 
