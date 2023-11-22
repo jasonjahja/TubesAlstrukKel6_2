@@ -85,6 +85,11 @@ void DisplayListLagu(SetofSong S)
 {
     for (int i = 0; i < BanyakLagu(S); i++)
     {
+        printf("     %d. ",i+1);
         TulisWord(S.Lagu[i].judul);
     }
+}
+
+Word IndeksSong(SetofSong S,int idx){
+    return (S.Lagu[idx].judul);
 }

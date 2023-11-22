@@ -14,17 +14,15 @@ void queueSong (ListofPenyanyi daftarpenyanyi, Queue * queue)
         }
 
         printf("Masukkan nama penyanyi yang dipilih: ");
-        STARTINPCOMMAND(stdin);
-        Word inp = toKata(currentLine.kalimat);
-        int IDPenyanyi = IndeksPenyanyi(daftarpenyanyi, inp);
+        STARTWORD(stdin);
+        int IDPenyanyi = IndeksPenyanyi(daftarpenyanyi, currentWord);
 
         while (IDPenyanyi == -1)
         {
             printf("Nama penyanyi tidak terdaftar!\n");
             printf("Masukkan nama penyanyi yang dipilih: ");
-            STARTINPCOMMAND(stdin);
-            Word inp = toKata(currentLine.kalimat);
-            IDPenyanyi = IndeksPenyanyi(daftarpenyanyi, inp);
+            STARTWORD(stdin);
+            IDPenyanyi = IndeksPenyanyi(daftarpenyanyi, currentWord);
         }
 
         if (IDPenyanyi != -1)
@@ -37,17 +35,15 @@ void queueSong (ListofPenyanyi daftarpenyanyi, Queue * queue)
             }
 
             printf("Masukkan nama album yang dipilih: ");
-            STARTINPCOMMAND(stdin);
-            Word inp = toKata(currentLine.kalimat);
-            int IDAlbum = IndeksAlbum(daftarpenyanyi.listpenyanyi[IDPenyanyi].album, inp);
+            STARTWORD(stdin);
+            int IDAlbum = IndeksAlbum(daftarpenyanyi.listpenyanyi[IDPenyanyi].album, currentWord);
             
             while (IDAlbum == -1)
             {
                 printf("Nama album tidak terdaftar!\n");
                 printf("Masukkan nama album yang dipilih: ");
-                STARTINPCOMMAND(stdin);
-                Word inp = toKata(currentLine.kalimat);
-                IDAlbum = IndeksAlbum(daftarpenyanyi.listpenyanyi[IDPenyanyi].album, inp);
+                STARTWORD(stdin);
+                IDAlbum = IndeksAlbum(daftarpenyanyi.listpenyanyi[IDPenyanyi].album, currentWord);
             }
 
             if (IDAlbum != -1)
@@ -60,17 +56,15 @@ void queueSong (ListofPenyanyi daftarpenyanyi, Queue * queue)
                 }
 
                 printf("Masukkan ID lagu yang dipilih: ");
-                STARTINPCOMMAND(stdin);
-                Word inp = toKata(currentLine.kalimat);
-                int IDLagu = WordtoNum (inp) - 1;
+                STARTWORD(stdin);
+                int IDLagu = WordtoNum(currentWord) - 1;
 
                 while (IDLagu <= -1 && IDLagu > BanyakLagu(daftarpenyanyi.listpenyanyi[IDPenyanyi].album.listalbum[IDAlbum].listlagu))
                 {
                     printf("ID Lagu tidak terdaftar!\n");
                     printf("Masukkan ID lagu yang dipilih: ");
-                    STARTINPCOMMAND(stdin);
-                    Word inp = toKata(currentLine.kalimat);
-                    IDLagu = WordtoNum (inp) - 1;
+                    STARTWORD(stdin);
+                    IDLagu = WordtoNum(currentWord) - 1;
                 }
 
                 if (IDLagu < BanyakLagu(daftarpenyanyi.listpenyanyi[IDPenyanyi].album.listalbum[IDAlbum].listlagu))
@@ -90,52 +84,11 @@ void queueSong (ListofPenyanyi daftarpenyanyi, Queue * queue)
 
     else
     {
-        printf("Queue penuh! Tidak dapat menambahkan lagu ke queue.\n");
+        printf("Queue penuh. Tidak dapat menambahkan lagu ke queue.\n");
     }
 }
 
-void queuePlaylist(ListofPlaylist daftarplaylist, Queue * queue)
-{
-    printf("Masukkan ID Playlist: ");
-    STARTINPCOMMAND(stdin);
-    Word inp = toKata(currentLine.kalimat);
-    int IDPlaylist = WordtoNum(inp) - 1;
-
-    while (IDPlaylist <= -1 && IDPlaylist > (daftarplaylist.nEff - 1))
-    {
-        printf("ID Playlist tidak terdaftar!\n");
-        printf("Masukkan ID Playlist: ");
-        STARTINPCOMMAND(stdin);
-        Word inp = toKata(currentLine.kalimat);
-        inp = toKata(currentLine.kalimat);
-        IDPlaylist = WordtoNum(inp) - 1;
-    }
-
-    address P = daftarplaylist.list[IDPlaylist].First;
-    int ctr = 0;
-
-    while (P != NilNode)
-    {
-        ctr++;
-        P = Next(P);
-    }
-
-    if ((ctr-1) > IDX_MAXQueue)
-    {
-        printf("Queue penuh! Tidak dapat menambahkan lagu ke queue\n");
-    }
-    else
-    {
-        P = daftarplaylist.list[IDPlaylist].First;
-        while (P != NilNode)
-        {
-            enqueueQueue(queue, P->info.Lagu.judul, P->info.Lagu.album, P->info.Lagu.penyanyi);
-            P = Next(P);
-        }
-
-        printf("Berhasil menambahkan playlist \""); TulisWord(daftarplaylist.namaPlaylist[IDPlaylist]); printf("\" ke queue.\n");
-    }
-}
+void queuePlaylist();
 
 void queueSwap (Queue * queue, int id1, int id2)
 {
@@ -174,7 +127,7 @@ void queueSwap (Queue * queue, int id1, int id2)
 
         printf("Mencari lagu dengan urutan ke %d dan %d dalam queue. . .\n", id1, id2);
         printf("Lagu \""); TulisWordNoNL((*queue).song[idx2]); 
-        printf("\" berhasil ditukar dengan \""); TulisWordNoNL((*queue).song[idx1]); printf("\".\n");
+        printf("\" berhasil ditukar dengan \""); TulisWordNoNL((*queue).song[idx1]); printf("\".");
     }
 }
 

@@ -14,7 +14,7 @@ void nextSong(Queue *queue, songHistory *history, CurrentStat *currentSong)
             TulisWordNoNL(HEADSONG(*queue));
             printf("\" oleh \"");
             TulisWordNoNL(HEADSINGER(*queue));
-            printf("\"\n\n");
+            printf("\"\n");
             currentSong->currentplay.judul = HEADSONG(*queue);
             currentSong->currentplay.album = HEADALBUM(*queue);
             currentSong->currentplay.penyanyi = HEADSINGER(*queue);
@@ -24,7 +24,7 @@ void nextSong(Queue *queue, songHistory *history, CurrentStat *currentSong)
         else
         {
             printf("Tidak ada lagu dalam antrian.\n");
-            printf("Tidak ada lagu yang dapat diputar.\n\n");
+            printf("Tidak ada lagu yang dapat diputar.\n");
         }
     }
     else
@@ -36,7 +36,7 @@ void nextSong(Queue *queue, songHistory *history, CurrentStat *currentSong)
             TulisWordNoNL(HEADSONG(*queue));
             printf("\" oleh \"");
             TulisWordNoNL(HEADSINGER(*queue));
-            printf("\"\n\n");
+            printf("\"\n");
             PushStack(history, currentSong->currentplay.judul, currentSong->currentplay.album, currentSong->currentplay.penyanyi);
             currentSong->currentplay.judul = HEADSONG(*queue);
             currentSong->currentplay.album = HEADALBUM(*queue);
@@ -51,7 +51,7 @@ void nextSong(Queue *queue, songHistory *history, CurrentStat *currentSong)
             TulisWordNoNL(currentSong->currentplay.judul);
             printf("\" oleh \"");
             TulisWordNoNL(currentSong->currentplay.penyanyi);
-            printf("\"\n\n");
+            printf("\"\n");
         }
     }
 }
@@ -69,7 +69,7 @@ void prevSong(Queue *queue, songHistory *history, CurrentStat *currentSong)
             TulisWordNoNL(currentSong->currentplay.judul);
             printf("\" oleh \"");
             TulisWordNoNL(currentSong->currentplay.penyanyi);
-            printf("\"\n\n");
+            printf("\"\n");
         }
         else
         {
@@ -79,12 +79,12 @@ void prevSong(Queue *queue, songHistory *history, CurrentStat *currentSong)
             TulisWordNoNL(currentSong->currentplay.judul);
             printf("\" oleh \"");
             TulisWordNoNL(currentSong->currentplay.penyanyi);
-            printf("\"\n\n");
+            printf("\"\n");
         }
     }
     else
     {
-        printf("Belum ada lagu yang diputar.\n\n");
+        printf("Belum ada lagu yang diputar.\n");
     }
 }
 

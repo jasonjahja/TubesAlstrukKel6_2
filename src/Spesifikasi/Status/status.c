@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "Status.h"
 
-void Status (CurrentStat stat, Queue QL) 
+void status (CurrentStat stat, Queue QL) 
 {
     if (stat.currentplay.status == 0) // kondisi tidak ada lagu
     { 

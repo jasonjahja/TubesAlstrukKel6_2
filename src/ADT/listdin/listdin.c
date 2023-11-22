@@ -49,7 +49,7 @@ int  IndexListPlaylist(ListofPlaylist l, Word val)
         int count = 0;
         for (int i = 0; i< LengthListPlaylist(l); i++)
         {
-            if (IsWordEq(l.namaPlaylist[i], val))
+            if (IsWordEq(l.namaPlaylist[count], val))
             {
                 return count;
             }
@@ -59,9 +59,10 @@ int  IndexListPlaylist(ListofPlaylist l, Word val)
     return -1;
 }
 
-ListBerkait GetListPlaylist(ListofPlaylist l, int idx)
+
+Word GetListPlaylist(ListofPlaylist l, int idx)
 {
-    return l.list[idx];
+    return l.namaPlaylist[idx];
 }
 
 void InsertListPlaylist(ListofPlaylist *l, Word val)
@@ -104,6 +105,7 @@ void DisplayListPlaylist(ListofPlaylist *l)
 {
     for (int i = 0; i < LengthListPlaylist(*l);i++)
     {
+        printf("     %d. ",i+1);
         TulisWordNoNL((*l).namaPlaylist[i]);
         printf("\n");
     }

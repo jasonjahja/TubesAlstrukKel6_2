@@ -9,11 +9,10 @@
 #include "../../../src/ADT/mesinkata/mesinkata.h"
 #include "../../../src/ADT/mesinkarakter/mesinkarakter.h"
 #include "../../../src/ADT/mesinbaris/mesinbaris.h"
-#include "../../ADT/listdin/listdin.h"
 
 void queueSong (ListofPenyanyi daftarpenyanyi, Queue * queue);
 
-void queuePlaylist(ListofPlaylist daftarplaylist, Queue * queue);
+void queuePlaylist();
 
 void queueSwap (Queue * queue, int id1, int id2);
 
