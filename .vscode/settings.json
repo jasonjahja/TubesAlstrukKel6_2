@@ -1,29 +1,8 @@
 {
   "files.associations": {
-    "boolean.h": "c",
-    "mesinkata.h": "c",
-    "stdio.h": "c",
-    "newstruct.h": "c",
-    "string.h": "c",
-    "stack.h": "c",
-    "nodealt.h": "c",
-    "set.h": "c",
-    "node.h": "c",
-    "map.h": "c",
-    "mesinkarakter.h": "cpp",
-    "mesinbaris.h": "c",
     "list.h": "c",
-    "mesinkarakter.c": "c",
-    "start.h": "c",
-    "queue.h": "c",
-    "stdlib.h": "c",
-    "listdin.h": "c",
-    "help.h": "c",
-    "listberkait.h": "c",
-    "console.h": "c",
-    "time.h": "c",
-    "list_default.h": "c",
-    "play.h": "c"
+    "mesinkata.h": "c",
+    "map.h": "c",
+    "queue.h": "c"
   }
 }
-
